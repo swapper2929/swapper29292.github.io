@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tặng Quà Giáng Sinh 🎁</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #ffcccc, #ff99cc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 350px;
+  }
+  h1 {
+    color: #e60073;
+    margin-bottom: 20px;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .option {
+    display: block;
+    background-color: #ffcccc;
+    color: #333;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #ff99cc;
+    pointer-events: auto;
+  }
+  .option:hover {
+    background-color: #ff99cc;
+    color: white;
+  }
+  .hidden {
+    display: none;
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Tặng Quà Giáng Sinh 🎁</h1>
+  <div id="quiz">
+    <div class="question" id="q1">
+      <p>1. Màu truyền thống của Giáng Sinh là gì?</p>
+      <span class="option" onclick="nextQuestion(this)">Đỏ</span>
+      <span class="option" onclick="nextQuestion(this)">Xanh lá</span>
+      <span class="option" onclick="nextQuestion(this)">Vàng</span>
+      <span class="option" onclick="nextQuestion(this)">Tím</span>
+    </div>
+    <div class="question hidden" id="q2">
+      <p>2. Ông già Noel cưỡi gì để phát quà?</p>
+      <span class="option" onclick="nextQuestion(this)">Ngựa</span>
+      <span class="option" onclick="nextQuestion(this)">Tuần lộc</span>
+      <span class="option" onclick="nextQuestion(this)">Xe máy</span>
+      <span class="option" onclick="nextQuestion(this)">Xe hơi</span>
+    </div>
+    <div class="question hidden" id="q3">
+      <p>3. Bánh truyền thống Giáng Sinh là gì?</p>
+      <span class="option" onclick="nextQuestion(this)">Bánh bông lan</span>
+      <span class="option" onclick="nextQuestion(this)">Bánh gừng</span>
+      <span class="option" onclick="nextQuestion(this)">Bánh mì</span>
+      <span class="option" onclick="nextQuestion(this)">Pizza</span>
+    </div>
+    <div class="question hidden" id="q4">
+      <p>4. Cây thông Giáng Sinh thường được trang trí bằng gì?</p>
+      <span class="option" onclick="nextQuestion(this)">Đèn và đồ trang trí</span>
+      <span class="option" onclick="nextQuestion(this)">Bánh kẹo</span>
+      <span class="option" onclick="nextQuestion(this)">Hoa tươi</span>
+      <span class="option" onclick="nextQuestion(this)">Sách</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  let current = 1;
+  let clickable = true;
+
+  function nextQuestion(el) {
+    if(!clickable) return;
+    clickable = false;
+    el.classList.add('disabled'); // Hiệu ứng disable tạm thời
+
+    setTimeout(() => {
+      document.getElementById('q'+current).classList.add('hidden');
+      current++;
+      if(current <= 4){
+        document.getElementById('q'+current).classList.remove('hidden');
+        clickable = true;
+      } else {
+        alert("🎉 Chúc mừng! Bạn sắp nhận quà nè!");
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      }
+    }, 3000); // delay 3 giây
+  }
+</script>
+
+</body>
+</html>
